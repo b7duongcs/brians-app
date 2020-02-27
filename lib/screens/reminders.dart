@@ -38,7 +38,7 @@ class RPageState extends State<RPage> {
                       MaterialPageRoute(builder: (context) => NoteEdit(NoteMode.Editing, notes[index]),),
                     );
                   },
-                  /*onLongPress: () {
+                  onLongPress: () {
                     showDialog(context: context,
                       builder: (BuildContext context) => CupertinoAlertDialog(
                         title: Text('Delete?',
@@ -55,8 +55,9 @@ class RPageState extends State<RPage> {
                               ),
                             ),
                             onPressed: () async {
-                              await NoteProvider.deleteNote(notes[index]);
-                              Navigator.of(context).pop();
+                                await NoteProvider.deleteNote(notes[index]['id']);
+                                setState(() {});
+                                Navigator.of(context).pop();
                             },
                             ),
                           CupertinoDialogAction(
@@ -72,7 +73,7 @@ class RPageState extends State<RPage> {
                             ],
                             )
                       );
-                  },*/
+                  },
             child: Card(
              child: Padding(
                 padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 22.0, right: 22.0),
