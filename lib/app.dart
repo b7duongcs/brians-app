@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('App Title'),
+          title: const Text('Brian\'s App'),
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.settings),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/inherited_widgets/inherited_widgets.dart';
+//import 'package:myapp/inherited_widgets/inherited_widgets.dart';
 import 'package:myapp/providers/note_providers.dart';
 
 enum NoteMode {
@@ -23,7 +23,7 @@ class NoteEditState extends State<NoteEdit> {
   final TextEditingController _tagController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
 
-  List<Map<String, String>> get _notes => NoteInheritedWidget.of(context).notes;
+  //List<Map<String, String>> get _notes => NoteInheritedWidget.of(context).notes;
   //List<Map<String, String>> get _tags => TagInheritedWidget.of(context).tags;
   List<String> lot = [];
   
