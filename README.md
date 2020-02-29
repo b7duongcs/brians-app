@@ -12,7 +12,7 @@ Coming Soon
 # Reminders
 This is the page where you can add various reminders, such as quizzes, assignments, or just any other things that you may need to do
 
-<img src="/Screenshots/Blank.png" width="35%" height="35%">
+<img align = "center" src="/Screenshots/Blank.png" width="35%" height="35%">
 
 # Marks
 Coming Soon
