@@ -11,6 +11,7 @@ Coming Soon
 
 # Reminders
 This is the page where you can add various reminders, such as quizzes, assignments, or just any other things that you may need to do
+![Blank Screen](/Screenshots/blank.png)
 
 # Marks
 Coming Soon
