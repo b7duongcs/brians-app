@@ -23,7 +23,7 @@ Pretty blank right now, but you can add a reminder with the "+" button on the bo
 </p>
 
 Simply fill in all the information fields. 
-Both the "Date" and "Time" fields use their respective non-text entry fields
+Both the "Date" and "Time" fields use their respective non-text entry forms
 
 <p align = "center">
 <img src="/Screenshots/Calendar.png" width="35%" height="35%">
