@@ -33,7 +33,7 @@ Both the "Date" and "Time" fields use their respective non-text entry fields
 After entering evertyhing, your screen should look something like this:
 
 <p align = "center">
-<img src="/Screenshots/Filled_Add.png" width="35%" height="35%">
+<img src="/Screenshots/Filled Add.png" width="35%" height="35%">
 </p>
 
 # Marks
