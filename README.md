@@ -26,7 +26,7 @@ Simply fill in all the information fields.
 Both the "Date" and "Time" fields use their respective non-text entry fields
 
 <p align = "center">
-<img src="/Screenshots/Date.png" width="35%" height="35%">
+<img src="/Screenshots/Calendar.png" width="35%" height="35%">
 <img src="/Screenshots/Time.png" width="35%" height="35%">
 </p>
 
