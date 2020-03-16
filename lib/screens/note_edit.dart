@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:myapp/inherited_widgets/inherited_widgets.dart';
 import 'package:myapp/providers/note_providers.dart';
 
 enum NoteMode {
@@ -23,10 +23,7 @@ class NoteEditState extends State<NoteEdit> {
   final TextEditingController _tagController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
 
-  //List<Map<String, String>> get _notes => NoteInheritedWidget.of(context).notes;
-  //List<Map<String, String>> get _tags => TagInheritedWidget.of(context).tags;
   List<String> lot = [];
-  
   DateTime _dateTime;
   TimeOfDay _time;
   var selectedTag;
@@ -64,41 +61,76 @@ class NoteEditState extends State<NoteEdit> {
               ),
             ),
             Container(height: 8,),
-            TextField(
-              controller: _tagController,
-              decoration: InputDecoration(
-                hintText: 'Tag'
-              ),
-            ),
-            /*Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                DropdownButton(items: 
-                lot.map((value) => DropdownMenuItem(
-                  child: Text(
-                    value,
-                  ),
-                  value: value,
-                  )).toList(), onChanged: 
-                  (selectedTagType) {
-                    setState(() {
-                      selectedTag = selectedTagType;
-                    });
-                  },
-                  value: selectedTag,
-                  isExpanded: false,
-                  hint: Text('Choose Tag'),
-                  ),
+                FutureBuilder(
+                  future: TagProvider.getTagList(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      final tags = snapshot.data;
+                      int total = tags.length;
+                      List<String> lotags = [];
+                      for (int i = 0; i < total; i++) {
+                        lotags.add(tags[i]['tag']);
+                      }
+                      return DropdownButton(
+                        items: lotags.map((value) => DropdownMenuItem(
+                          child: Text(value,),
+                          value: value,
+                        )).toList(), onChanged: 
+                        (selectedTagType) {
+                          setState(() {
+                            selectedTag = selectedTagType;
+                          });
+                        },
+                        value: selectedTag,
+                        isExpanded: false,
+                        hint: Text('Choose Tag'),
+                      );
+                    }
+                    return CircularProgressIndicator();
+                  }
+                ),
                   FlatButton(onPressed: ()
                     { 
-                      setState(() {
-                        lot.add('Math'); //open new screen and prompt to add new tag
-                      });
+                      TextEditingController _newTagController = TextEditingController();
+                      showDialog(context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text(
+                              "Add Tag",
+                              style: 
+                              TextStyle(color: Colors.grey.shade800),
+                              textAlign: TextAlign.center,
+                            ),
+                            content: TextField(
+                              controller: _newTagController,
+                              textAlign: TextAlign.center,
+                            ),
+                            actions: <Widget>[
+                              MaterialButton(
+                                child: Text('Add',
+                                style: TextStyle(color: Colors.deepOrange),
+                                ),
+                                onPressed: 
+                                //_newTagController.text == '' ? null :
+                                () async {
+                                  final tag = _newTagController.text;
+                                  await TagProvider.insertTag({'tag' : tag});
+                                  setState(() {});
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        }
+                      );
                     }, 
                     child: Icon(Icons.add)
                   )
               ],
-            ),*/
+            ),
             Container(height: 8,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -159,7 +191,8 @@ class NoteEditState extends State<NoteEdit> {
             MaterialButton(
               onPressed: () {
                 final title = _titleController.text;
-                final tag = _tagController.text;
+                final tag = selectedTag;
+                //final tag = _tagController.text;
                 final text = _textController.text;
                 final date = _dateTime.toString().substring(0,10);
                 final time = _time.toString().substring(10,15);

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:myapp/inherited_widgets/inherited_widgets.dart';
-//import 'package:myapp/providers/note_providers.dart';
 
 class NoteView extends StatefulWidget {
   final Map<String, dynamic> note;
@@ -12,7 +10,6 @@ class NoteView extends StatefulWidget {
 }
 
 class NoteViewState extends State<NoteView> {
-  //List<Map<String, String>> get _notes => NoteInheritedWidget.of(context).notes;
 
   @override 
   Widget build(BuildContext context) {
